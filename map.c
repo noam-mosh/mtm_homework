@@ -2,16 +2,24 @@
 #include <assert.h>
 #include "map.h"
 
+#define INITIAL_SIZE 10;
+#define EXPAND_FACTOR 2;
 #define SWAP(a,b) swap(&(a),&(b),sizeof(a))
 /** The Map is implemented as an array of data and key Elements.
  *  With nextIndex as an index to the next available position and
  *  maximal size stored in maxsize.
  */
-struct map_t{
+
+typedef struct element{
     MapDataElement* data;
     MapKeyElement* key;
+} *Element;
+
+struct map_t{
+    Element elements_array;
     int nextIndex;
     int maxSize;
+    int iterator;
     copyMapDataElements copyDataElement;
     copyMapKeyElements copyKeyElement;
     freeMapDataElements freeDataElement;
@@ -38,21 +46,14 @@ Map mapCreate(copyMapDataElements copyDataElement,
     {
         return NULL;
     }
-    map->data = malloc(sizeof(MapDataElement));
-    if (map->data == NULL)
+    map->elements_array = malloc(INITIAL_SIZE *sizeof(Element));
+    if (map->elements_array == NULL)
     {
-        free (map);
+        free(map);
         return NUll;
     }
-    map->key = malloc(sizeof(MapKeyElement));
-    if (map->key == NULL)
-    {
-        freeDataElement(map->data);
-        free (map);
-        return NUll;
-    }
-    map->data == NULL;
-    map->key == NULL;
+    map->nextIndex = 0;
+    map->maxSize = INITIAL_SIZE;
     map->copyDataElement = copyDataElement;
     map->copyKeyElement = copyMapKeyElements;
     map->freeDataElement = freeMapDataElements;
@@ -84,6 +85,7 @@ bool mapContains(Map map, MapKeyElement element)
         return false;
     }
     int map_size = mapGetSize(map);
+    int map_size = mapGetSize(map);
     for (int i = 0; i < map_size; ++i)
     {
         if ((map+(i*sizeof(Map)))->key == element)
@@ -94,7 +96,7 @@ bool mapContains(Map map, MapKeyElement element)
     return false;
 }
 
-static void mapKeyReplace(Map key_ptr, MapKeyElement keyElement, MapDataElement dataElement)
+static void mapReplaceData(Map key_ptr, MapKeyElement keyElement, MapDataElement dataElement)
 {
     key_ptr->freeDataElement(key_ptr->data);
     key_ptr->data = key_ptr->copyDataElement(dataElement);
@@ -120,12 +122,51 @@ static void mapKeyRearrange(Map map, int key_index, int map_size, MapKeyElement 
     }
 }
 
+int findIndexOfNewElement(Map map, MapKeyElement keyElement)
+{
+    Element array = map->elements_array;
+    int array_size = map->nextIndex;
+    compareMapKeyElements compare_function = map->compareKeyElements;
+    for (int i = 0; i < array_size; i++)
+    {
+       if(compare_function(keyElement, array[i].key) == 0)
+       {
+           return i;
+       }
+       if(compare_function(keyElement, array[i].key) < 0)
+       {
+           return i - 1;
+       }
+    }
+    return array_size;
+}
+
 MapResult mapPut(Map map, MapKeyElement keyElement, MapDataElement dataElement)
 {
     if (map == NULL)
     {
         return MAP_NULL_ARGUMENT;
     }
+    if (mapContains(map, keyElement, dataElement))
+    {
+        mapKeyRearrange(map, )
+    }
+    if (map->nextIndex == map->maxSize)
+    {
+        expand(map);
+    }
+    MapKeyElement new_key_element = map->copy
+
+
+
+
+
+
+
+
+
+
+
     int map_size = mapGetsize(map);
     Map ptr = map;
     for (;ptr < map + (map_size * sizeof(Map)); ptr += sizeof(Map))
