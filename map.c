@@ -152,6 +152,12 @@ MapResult mapPut(Map map, MapKeyElement keyElement, MapDataElement dataElement)
     {
         return MAP_NULL_ARGUMENT;
     }
+    MapKeyElement new_key = map->copyKeyElement(keyElement);
+    MapDataElement new_data = map->copyDataElement(dataElement);
+    if (new_key== NULL || new_data == NULL)
+    {
+        return MAP_OUT_OF_MEMORY;
+    }
     bool key_is_new = true;
     int key_index = findKeyIndex(map, keyElement);
     Element element_to_update = map->array[key_index];
@@ -160,12 +166,6 @@ MapResult mapPut(Map map, MapKeyElement keyElement, MapDataElement dataElement)
         map->freeKeyElement(element_to_update->key);
         map->freeDataElement(element_to_update->data);
         key_is_new = false;
-    }
-    MapKeyElement new_key = map->copyKeyElement(keyElement);
-    MapDataElement new_data = map->copyDataElement(dataElement);
-    if (new_key== NULL || new_data == NULL)
-    {
-        return MAP_OUT_OF_MEMORY;
     }
     element_to_update->key = new_key;
     element_to_update->data = new_data;
@@ -188,7 +188,7 @@ MapResult mapPut(Map map, MapKeyElement keyElement, MapDataElement dataElement)
 
 MapDataElement mapGet(Map map, MapKeyElement keyElement)
 {
-    if (map == NULL || keyElement == NULL || !mapContains(mapm keyElement))
+    if (map == NULL || keyElement == NULL || !mapContains(map, keyElement))
     {
         return NULL;
     }
