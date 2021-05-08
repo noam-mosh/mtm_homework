@@ -4,7 +4,6 @@
 
 #define INITIAL_SIZE 10;
 #define EXPAND_FACTOR 2;
-#define UNDEFINED_ITERATOR -1;
 #define SWAP(a,b) swap(&(a),&(b),sizeof(a))
 
 static MapResult expand(Map map, int size)
