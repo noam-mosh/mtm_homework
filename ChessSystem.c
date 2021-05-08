@@ -162,6 +162,7 @@ ChessResult chessAddTournament (ChessSystem chess, int tournament_id,
     *tournament new_tournament= malloc(sizeof(new_tournament));
     if (new_tournament == NULL)
     {
+        chessDestroy(chess);
         return CHESS_OUT_OF_MEMORY;
     }
     new_tournament->tournament_id = tournament_id;
@@ -182,6 +183,10 @@ ChessResult chessAddTournament (ChessSystem chess, int tournament_id,
 static ChessResult gameParamsValid(ChessSystem chess, int tournament_id, int first_player,
                  int second_player, Winner winner, int play_time)
 {
+    if (chess == NULL)
+    {
+        CHESS_NULL_ARGUMENT;
+    }
     if (tournament_id < 0 || first_player < 0 || second_player < 0)
     {
         return CHESS_INVALID_ID;
