@@ -27,7 +27,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e4767fd-ff10-457d-86d3-c98ada4d5fc8" name="Default Changelist" comment="added function addGame">
+    <list default="true" id="5e4767fd-ff10-457d-86d3-c98ada4d5fc8" name="Default Changelist" comment="added map in player struct: games_per_tournament">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChessSystem.c" beforeDir="false" afterPath="$PROJECT_DIR$/ChessSystem.c" afterDir="false" />
     </list>
@@ -77,7 +77,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1619377194624</updated>
-      <workItem from="1619377195751" duration="113551000" />
+      <workItem from="1619377195751" duration="125446000" />
     </task>
     <task id="LOCAL-00001" summary="create map GDT">
       <created>1619788059195</created>
@@ -142,7 +142,21 @@
       <option name="project" value="LOCAL" />
       <updated>1620478225886</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added map in player struct: games_per_tournament">
+      <created>1620488559697</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1620488559697</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added map in player struct: games_per_tournament">
+      <created>1620488570914</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1620488570914</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,7 +182,8 @@
     <MESSAGE value="first edition of map&#10;added chess h files" />
     <MESSAGE value="some edits on chess sys" />
     <MESSAGE value="added function addGame" />
-    <option name="LAST_COMMIT_MESSAGE" value="added function addGame" />
+    <MESSAGE value="added map in player struct: games_per_tournament" />
+    <option name="LAST_COMMIT_MESSAGE" value="added map in player struct: games_per_tournament" />
   </component>
   <component name="WindowStateProjectService">
     <state x="121" y="51" key="DiffContextDialog" timestamp="1620060391975">
@@ -184,11 +199,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1620045165952" />
-    <state x="544" y="73" width="735" height="533" key="Vcs.Push.Dialog.v2" timestamp="1620478227125">
+    <state x="544" y="73" width="735" height="533" key="Vcs.Push.Dialog.v2" timestamp="1620488584540">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="204" y="67" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1620234203077" />
-    <state x="544" y="73" width="735" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1620478227125" />
+    <state x="544" y="73" width="735" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1620488584540" />
     <state x="2012" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1620244507183">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -201,9 +216,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1620399884588" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1620475996538">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="2375" y="2" width="1008" height="1037" key="search.everywhere.popup" timestamp="1620504404178">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="2375" y="2" width="1008" height="1037" key="search.everywhere.popup/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1620504404178" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1620475996538" />
   </component>
   <component name="XDebuggerManager">
@@ -211,18 +227,23 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ChessSystem.c</url>
-          <line>225</line>
+          <line>232</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ChessSystem.c</url>
-          <line>247</line>
+          <line>255</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/ChessSystem.c</url>
-          <line>248</line>
+          <line>256</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/ChessSystem.c</url>
+          <line>499</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
