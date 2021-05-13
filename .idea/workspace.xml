@@ -27,9 +27,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e4767fd-ff10-457d-86d3-c98ada4d5fc8" name="Default Changelist" comment="added chessEndTournament">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChessSystem.c" beforeDir="false" afterPath="$PROJECT_DIR$/ChessSystem.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map.c" beforeDir="false" afterPath="$PROJECT_DIR$/map.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,19 +48,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1rfprC5C3rU6j8Xg6qLvwKrn6VL" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
@@ -77,8 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1619377194624</updated>
-      <workItem from="1619377195751" duration="126249000" />
-      <workItem from="1620650684115" duration="25834000" />
     </task>
     <task id="LOCAL-00001" summary="create map GDT">
       <created>1619788059195</created>
@@ -87,84 +81,7 @@
       <option name="project" value="LOCAL" />
       <updated>1619788059196</updated>
     </task>
-    <task id="LOCAL-00002" summary="create map GDT">
-      <created>1620044619882</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1620044619882</updated>
-    </task>
-    <task id="LOCAL-00003" summary="added functions for copying and freeing data and key elements">
-      <created>1620060465413</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1620060465413</updated>
-    </task>
-    <task id="LOCAL-00004" summary="added h file">
-      <created>1620060531488</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1620060531488</updated>
-    </task>
-    <task id="LOCAL-00005" summary="add elements array">
-      <created>1620234201095</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1620234201096</updated>
-    </task>
-    <task id="LOCAL-00006" summary="first edition of map&#10;added chess h files">
-      <created>1620401353880</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1620401353880</updated>
-    </task>
-    <task id="LOCAL-00007" summary="some edits on chess sys">
-      <created>1620462198760</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1620462198775</updated>
-    </task>
-    <task id="LOCAL-00008" summary="some edits on chess sys">
-      <created>1620462697038</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1620462697038</updated>
-    </task>
-    <task id="LOCAL-00009" summary="added function addGame">
-      <created>1620478225886</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1620478225886</updated>
-    </task>
-    <task id="LOCAL-00010" summary="added map in player struct: games_per_tournament">
-      <created>1620488559697</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1620488559697</updated>
-    </task>
-    <task id="LOCAL-00011" summary="added map in player struct: games_per_tournament">
-      <created>1620488570914</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1620488570914</updated>
-    </task>
-    <task id="LOCAL-00012" summary="added chessEndTournament">
-      <created>1620592907806</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1620592907808</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,65 +100,24 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="create map GDT" />
-    <MESSAGE value="added functions for copying and freeing data and key elements" />
-    <MESSAGE value="added h file" />
-    <MESSAGE value="add elements array" />
-    <MESSAGE value="first edition of map&#10;added chess h files" />
-    <MESSAGE value="some edits on chess sys" />
-    <MESSAGE value="added function addGame" />
-    <MESSAGE value="added map in player struct: games_per_tournament" />
-    <MESSAGE value="added chessEndTournament" />
-    <option name="LAST_COMMIT_MESSAGE" value="added chessEndTournament" />
+
   </component>
   <component name="WindowStateProjectService">
-    <state x="121" y="51" key="DiffContextDialog" timestamp="1620060391975">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1619699544305">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="121" y="51" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1620060391975" />
-    <state x="421" y="96" width="777" height="489" key="FileChooserDialogImpl" timestamp="1620466598170">
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1619699544305" />
+    <state x="-1736" y="303" key="MergeDialog" timestamp="1620593306449">
+      <screen x="-1920" y="218" width="1920" height="1040" />
+    </state>
+
+    </state>
+    <state x="-1192" y="646" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1504.963/-1920.218.1920.1040@-1920.218.1920.1040" timestamp="1620594962827" />
+    <state x="570" y="396" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1504.963@0.0.1504.963" timestamp="1620488651562" />
+    <state x="297" y="151" key="run.anything.popup" timestamp="1619714898751">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="2552" y="147" key="FileChooserDialogImpl/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1620247801399" />
-    <state x="421" y="96" width="777" height="489" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1620466598170" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1620045165952">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1620045165952" />
-    <state x="2736" y="112" width="735" height="533" key="Vcs.Push.Dialog.v2" timestamp="1620592909756">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="204" y="67" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1620234203077" />
-    <state x="2736" y="112" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1620592909756" />
-    <state x="544" y="73" width="735" height="533" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1620488584540" />
-    <state x="2012" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1620244507183">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2012" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1620244507183" />
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1620224600279">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1620224600279" />
-    <state x="297" y="151" key="run.anything.popup" timestamp="1620399884588">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1620399884588" />
-    <state x="2375" y="2" width="1008" height="1037" key="search.everywhere.popup" timestamp="1620504404178">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2375" y="2" width="1008" height="1037" key="search.everywhere.popup/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1620504404178" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1620475996538" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/ChessSystem.c</url>
-          <line>529</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+
   </component>
 </project>
