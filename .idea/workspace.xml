@@ -27,7 +27,6 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e4767fd-ff10-457d-86d3-c98ada4d5fc8" name="Default Changelist" comment="create map GDT">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ChessSystem.c" beforeDir="false" afterPath="$PROJECT_DIR$/ChessSystem.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map.c" beforeDir="false" afterPath="$PROJECT_DIR$/map.c" afterDir="false" />
@@ -74,10 +73,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1619377194624</updated>
-      <workItem from="1619377195751" duration="37843000" />
-      <workItem from="1620402369444" duration="35699000" />
-      <workItem from="1620563615862" duration="7287000" />
-      <workItem from="1620664144455" duration="6083000" />
     </task>
     <task id="LOCAL-00001" summary="create map GDT">
       <created>1619788059195</created>
@@ -86,7 +81,7 @@
       <option name="project" value="LOCAL" />
       <updated>1619788059196</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,7 +101,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create map GDT" />
-    <option name="LAST_COMMIT_MESSAGE" value="create map GDT" />
+
   </component>
   <component name="WindowStateProjectService">
     <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1619699544305">
@@ -116,20 +111,13 @@
     <state x="-1736" y="303" key="MergeDialog" timestamp="1620593306449">
       <screen x="-1920" y="218" width="1920" height="1040" />
     </state>
-    <state x="-1736" y="303" key="MergeDialog/0.0.1504.963/-1920.218.1920.1040@-1920.218.1920.1040" timestamp="1620593306449" />
-    <state x="144" y="79" key="MergeDialog/0.0.1504.963@0.0.1504.963" timestamp="1620488902429" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1619788064361">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1619788064361" />
-    <state x="-1192" y="646" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1620594962827">
-      <screen x="-1920" y="218" width="1920" height="1040" />
+
     </state>
     <state x="-1192" y="646" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1504.963/-1920.218.1920.1040@-1920.218.1920.1040" timestamp="1620594962827" />
     <state x="570" y="396" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1504.963@0.0.1504.963" timestamp="1620488651562" />
     <state x="297" y="151" key="run.anything.popup" timestamp="1619714898751">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1619714898751" />
+
   </component>
 </project>
