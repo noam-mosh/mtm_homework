@@ -65,7 +65,9 @@ typedef enum
 {
     WINNER,
     LOSER,
-    TIE
+    TIE,
+    REPLACE_DRAW_WITH_TECHNICAL_WIN,
+    REPLACE_LOSE_WITH_TECHNICAL_WIN
 }PlayerResult;
 
 =============================================
@@ -380,6 +382,12 @@ static ChessResult update_players_map(Map players, int player_id, PlayerResult p
         player->num_of_losses = 0;
         player->num_of_draws = 0;
         player->player_status = ACTIVE;
+        player->games_per_tournament = mapCreate(copyInt, copyInt, freeInt, freeInt);
+        if (player->games_per_tournament == NULL)
+        {
+            free(player);
+            return CHESS_OUT_OF_MEMORY;
+        }
     }
     player->num_of_games++;
     if (player_result == WINNER)
@@ -510,7 +518,95 @@ ChessResult chessEndTournament (ChessSystem chess, int tournament_id)
     }
     tournament->winner = (int*) mapGet(ranked_tournament_players, mapGetFirst(ranked_tournament_players))
     tournament->active = false;
-    mapDestroy(ranked_tournament_players);
+    mapDestroy(tournament_players);
+    return CHESS_SUCCESS;
+}
+
+PlayerResult check_player_state_in_game(Winner player_position_in_game, Winner game_winner, bool game_is_new)
+{
+    if (game_is_new == True)
+    {
+        if (game_winner == DRAW)
+        {
+            return TIE;
+        }
+        if (player_position_in_game == game_winner)
+        {
+            return WINNER;
+        }
+        return LOSER;
+    }
+    else
+    {
+        if (game_winner == DRAW)
+        {
+            return REPLACE_DRAW_WITH_TECHNICAL_WIN;
+        }
+        if (player_position_in_game != game_winner)
+        {
+            return REPLACE_LOSE_WITH_TECHNICAL_WIN;
+        }
+    }
+    return NO_CHANGE_TO_PLAYER_STATE;
+}
+
+
+ChessResult chessRemovePlayer(ChessSystem chess, int player_id)
+{
+    if (chess == NULL)
+    {
+        return CHESS_NULL_ARGUMENT;
+    }
+    if (player_id < 0)
+    {
+        return CHESS_INVALID_ID;
+    }
+    Map players = chess->players;
+    assert(players != NULL);
+    if (!mapContains(players, player_id))
+    {
+        return CHESS_PLAYER_NOT_EXIST;
+    }
+    Map tournaments = chess->tournaments;
+    MAP_FOREACH(int*, tournaments_iterator, tournaments)
+    {
+        Tournament current_tournament = (Tournament) mapGet(tournaments, tournaments_iterator);
+        if (current_tournament == NULL && current_tournament->winner != UNDEFINED_WINNER)
+        {
+            continue;
+        }
+        else
+        {
+            MAP_FOREACH(GameId, games_iterator, current_tournament->games)
+            {
+                Game current_game = (Game) mapGet(games, games_iterator);
+                if (current_game == NULL)
+                {
+                    continue;
+                }
+                else
+                {
+                    if (current_game->player1_id != player_id && current_game->player2_id != player_id)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        int opponent_id = current_game->player1_id;
+                        PlayerResult opponent_new_state = player_state_in_game(FIRST_PLAYER, current_game->game_winner);
+                        if (current_game->player2_id == player_id)
+                        {
+                            opponent_id = current_game->player2_id;
+                            opponent_new_state = player_state_in_game(SECOND_PLAYER, current_game->game_winner);
+                        }
+                        update_players_map(current_tournament->players, opponent_id, opponent_new_state);
+                    }
+                    assert (current_tournament->players != NULL && mapRemove(current_tournament->players, player_id) == MAP_SUCCESS)
+                    mapRemove(current_tournament->players, player_id);
+                }
+            }
+        }
+    }
     return CHESS_SUCCESS;
 }
 
@@ -590,86 +686,10 @@ double chessCalculateAveragePlayTime (ChessSystem chess, int player_id, ChessRes
     return (player_game_time_count / player_num_of_games);
 }
 
-Map create_all_players_map(ChessSystem chess)
-{
-    Map all_players = mapCreate(copyPlayer, copyInt, freePlayer, freeInt, compareInt);
-    if(all_players == MAP_OUT_OF_MEMORY)
-    {
-        return NULL;
     }
-    MAP_FOREACH(int*, tournament_id, chess->tournaments)
-    {
-        Tournament tournament = mapGet(chess->tournaments, tournament_id);
-        assert(tournament != NULL);
-        MAP_FOREACH(int*, game_id, tournament->games)
-        {
-            Game game = mapGet(tournament->games, game_id);
-            assert(game != NULL);
-            if(update_players_map(all_players, player_id, game->game_winner) == CHESS_OUT_OF_MEMORY)
-            {
-                mapDestroy(all_players)
-                return NULL;
-            }
-        }
-    }
-    return all_players;
 }
 
 ChessResult chessSavePlayersLevels (ChessSystem chess, FILE* file)
-{
-    Map all_players = create_all_players_map(ChessSystem chess);
-    if(all_players == NULL)
-    {
-        chessDestroy(chess);
-        return CHESS_OUT_OF_MEMORY;
-    }
-    Map ranked_players = mapCreate(copyPlayerLevel, copyPlayerLevel, freePlayerLevel, freePlayerLevel, comparePlayerLevel);
-    MAP_FOREACH(int*, player_id, all_players)
-    {
-        Player player = mapGet(all_players, player_id);
-        assert(player != NULL);
-        int player_level = ((6 * player->num_of_victories) - (10 * player->num_of_losses) + (2 * player->num_of_draws)) / (player->num_of_games);
-        PlayerLevelId player_level_id = malloc(sizeof(player_level_id));
-        if (player_level_id == NULL)
-        {
-            mapDestroy(all_players);
-            mapDestroy(ranked_players);
-            chessDestroy(chess);
-            return CHESS_OUT_OF_MEMORY;
-        }
-        player_level_id->player_id = player_id;
-        player_level_id->level = player_level;
-        if(mapPut(ranked_players, player_level_id, player_level_id) == CHESS_OUT_OF_MEMORY)
-        {
-            mapDestroy(all_players);
-            mapDestroy(ranked_players);
-            chessDestroy(chess);
-            return CHESS_OUT_OF_MEMORY;
-        }
-    }
-    FILE* file = fopen(filename, "w");
-    if (file == NULL)
-    {
-        return NULL;
-    }
-    return CHESS_SUCCESS;
-}
-
-int comparePlayerLevel(MapKeyElement key_element1, MapKeyElement key_element2)
-{
-    assert(key_element1 != NULL && key_element2 != NULL && key_element1 != key_element2);
-    PlayerLevelId player1 = *(PlayerLevelId) key_element1;
-    PlayerLevelId player2 = *(PlayerLevelId) key_element2;
-    if(player1->level == player2->level)
-    {
-        return (player1->player_id - player2->player_id);
-    }
-    return (-(player1->level - player2->level));
-}
-
-
-
-void* copyPlayerLevel(void* element)
 {
 
 }
@@ -678,18 +698,3 @@ ChessResult chessSaveTournamentStatistics (ChessSystem chess, char* path_file)
 {
 
 }
-
-HistoricalDate readEvents(char* filename) {
-    FILE* fd = fopen(filename, "r");
-    if (!fd) {
-        return NULL;
-    }     
-    HistoricalDate history = NULL;
-    char buffer[BUFF_SIZE] = "";
-    Date inputDate;
-    while (dateRead(&inputDate,fd) && fgets(buffer,BUFF_SIZE,fd) != NULL) {
-        Event newEvent = eventCreate(buffer);
-        history = historicalDateAddEvent(history, inputDate, newEvent);
-    }
-    fclose(fd);
-    return history;
